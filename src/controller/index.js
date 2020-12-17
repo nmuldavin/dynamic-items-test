@@ -1,12 +1,10 @@
 import { init } from "@datadog/ui-apps-sdk";
 import { useEffect } from "react";
 
-let DDClient = null;
-
 function Controller() {
   useEffect(() => {
-    DDClient = init({ debug: true }, (c) => {
-      console.log("Controller initialized");
+    init({ debug: true }, (c) => {
+      console.log("Datadog client initialized");
     });
   }, []);
 
