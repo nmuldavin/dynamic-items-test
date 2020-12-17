@@ -1,13 +1,13 @@
 import { init } from "@datadog/ui-apps-sdk";
 
-import "./App.css";
+import "./widget.css";
 import "typeface-roboto";
 import "milligram";
 import { useEffect, useState } from "react";
 
 let DDClient = null;
 
-function App() {
+function Widget() {
   const [name, setName] = useState("Datadog user");
   const [metric, setMetric] = useState("system.cpu.idle");
 
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default Widget;
