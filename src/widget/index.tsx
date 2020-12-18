@@ -1,4 +1,4 @@
-import { init } from "@datadog/ui-apps-sdk";
+import { init, UiAppEventType } from "@datadog/ui-apps-sdk";
 
 import "./widget.css";
 import "typeface-roboto";
@@ -18,7 +18,7 @@ function Widget() {
     });
 
     DDClient.events.on(
-      "dashboard_custom_widget_options_change",
+      UiAppEventType.DASHBOARD_CUSTOM_WIDGET_OPTIONS_CHANGE,
       ({ metric }) => {
         setMetric(metric);
       }
