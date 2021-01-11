@@ -1,0 +1,36 @@
+{
+  "main_url": "http://localhost:3000",
+  "scopes": [],
+  "features": [
+    {
+      "name": "dashboard_custom_widget",
+      "options": {
+        "widgets": [
+          {
+            "name": "Your first app",
+            "has_title": true,
+            "custom_widget_key": "your_first_app",
+            "source": "http://localhost:3000/widget",
+            "options": [
+              {
+                "enum": [
+                  "system.cpu.idle",
+                  "system.load.1",
+                  "system.load.5",
+                  "system.load.15"
+                ],
+                "type": "string",
+                "name": "metric",
+                "label": "Your favorite metric"
+              }
+            ],
+            "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png"
+          }
+        ]
+      }
+    }
+  ],
+  "description": "A hello-world like application used as a starting point for apps",
+  "name": "Your first app",
+  "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png"
+}
