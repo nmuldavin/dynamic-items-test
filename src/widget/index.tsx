@@ -5,19 +5,19 @@ import "typeface-roboto";
 import "milligram";
 import { useEffect, useState } from "react";
 
-let DDClient = null;
+const client = init ({ debug: true });
 
 function Widget() {
   const [name, setName] = useState("Datadog user");
   const [metric, setMetric] = useState("system.cpu.idle");
 
   useEffect(() => {
-    DDClient = init({ debug: true }, (c) => {
+    client.getContext().then(c => {
       setName(c.app.currentUser.handle);
       setMetric(c.widget?.definition.options?.metric);
-    });
+    })
 
-    DDClient.events.on(
+    client.events.on(
       UiAppEventType.DASHBOARD_CUSTOM_WIDGET_OPTIONS_CHANGE,
       ({ metric }) => {
         setMetric(metric);
