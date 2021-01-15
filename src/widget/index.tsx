@@ -13,8 +13,8 @@ function Widget() {
 
   useEffect(() => {
     DDClient = init({ debug: true }, (c) => {
-      setName(c.appContext.currentUser.handle);
-      setMetric(c.frameContext.options?.metric);
+      setName(c.app.currentUser.handle);
+      setMetric(c.widget?.definition.options?.metric);
     });
 
     DDClient.events.on(
