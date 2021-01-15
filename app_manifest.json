@@ -1,6 +1,9 @@
 {
-  "main_url": "http://localhost:3000",
   "scopes": [],
+  "main_url": "https://apps-starter-kit.netlify.app",
+  "description": "A hello-world like application used as a starting point for apps",
+  "dev_mode_url": "http://localhost:3000",
+  "name": "Your first app",
   "features": [
     {
       "name": "dashboard_custom_widget",
@@ -10,7 +13,7 @@
             "name": "Your first app",
             "has_title": true,
             "custom_widget_key": "your_first_app",
-            "source": "http://localhost:3000/widget",
+            "source": "widget",
             "options": [
               {
                 "enum": [
@@ -28,9 +31,48 @@
           }
         ]
       }
+    },
+    {
+      "name": "dashboard_cog_menu",
+      "options": {
+        "items": [
+          {
+            "href": "https://www.google.com",
+            "type": "link",
+            "key": "link-item",
+            "label": "Open a link"
+          },
+          {
+            "type": "event",
+            "key": "open-confirmation",
+            "label": "Please confirm"
+          },
+          {
+            "type": "event",
+            "key": "open-custom-modal",
+            "label": "Open a custom modal"
+          }
+        ],
+        "title": "Your first app"
+      }
+    },
+    {
+      "name": "modals",
+      "options": {
+        "definitions": [
+          {
+            "action_label": "Yes",
+            "cancel_label": "Nevermind",
+            "title": "Please verify!",
+            "key": "confirmation-modal",
+            "action_level": "danger",
+            "is_closeable": true,
+            "message": "Are you sure really sure?",
+            "size": "md"
+          }
+        ]
+      }
     }
   ],
-  "description": "A hello-world like application used as a starting point for apps",
-  "name": "Your first app",
   "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png"
 }
