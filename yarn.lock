@@ -1139,10 +1139,10 @@
   resolved "https://registry.yarnpkg.com/@datadog/framepost/-/framepost-0.2.0.tgz#c625745de0fde5851d17ece1e585d214704341cf"
   integrity sha512-Gl0emwxnnHE2av4kTo4N4bI2Wg/S9ApKrYyp+pvVEv8YwRFxP37FXURMrJS+33ZMusxhlXS9bRqUJuqSixcEvQ==
 
-"@datadog/ui-apps-sdk@0.9.2":
-  version "0.9.2"
-  resolved "https://registry.yarnpkg.com/@datadog/ui-apps-sdk/-/ui-apps-sdk-0.9.2.tgz#73c4eb5b97b0e5917907532326bf8dac46537f21"
-  integrity sha512-kQABs4rTTLzGNzNN42AVH1lCd0gEIlbZ+Vb4M3MGj5/cXqAU1UJEbhN7Sia2nEcjCQz0KbdAX9X7r98rhRwIdA==
+"@datadog/ui-apps-sdk@^0.9.3":
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/@datadog/ui-apps-sdk/-/ui-apps-sdk-0.9.3.tgz#ecf8b1d9b82d9ec02c4adb4a0076e6ce7e586e88"
+  integrity sha512-QETscQdkKnrEEwgEZCafe5U9+9lPnN8KRpURG9wfPGXQBrgDj9ngM3IgajCCWmcmos86WHjRfxA5FcHT3ExecQ==
   dependencies:
     "@datadog/framepost" "0.2.0"
 
