@@ -1,9 +1,5 @@
 {
   "scopes": [],
-  "main_url": "https://apps-starter-kit.netlify.app",
-  "description": "A hello-world like application used as a starting point for apps",
-  "dev_mode_url": "http://localhost:3000",
-  "name": "Your first app",
   "features": [
     {
       "name": "dashboard_custom_widget",
@@ -74,5 +70,9 @@
       }
     }
   ],
-  "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png"
+  "description": "A hello-world like application used as a starting point for apps",
+  "dev_mode_url": "http://localhost:3000",
+  "name": "Your first app",
+  "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png",
+  "main_url": "http://localhost:3000"
 }
