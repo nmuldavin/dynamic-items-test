@@ -1,15 +1,15 @@
-import { init, FeatureContext } from "@datadog/ui-apps-sdk";
+import { init } from "@datadog/ui-apps-sdk";
 import { useState, useEffect } from 'react';
 
 const client = init ({ debug: true });
 
 function SidePanel() {
 
-  const [args, setArgs] = useState<FeatureContext["sidePanel"]>();
+  const [args, setArgs] = useState<any>();
 
   
   useEffect(() => {
-    client.getContext().then(({ sidePanel }) => setArgs(sidePanel));
+    client.getContext().then(({ args }) => setArgs(args));
   }, [setArgs])
 
 
