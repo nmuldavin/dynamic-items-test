@@ -10,6 +10,7 @@ const client = init ({ debug: true });
 function Widget() {
   const [name, setName] = useState("Datadog user");
   const [metric, setMetric] = useState("system.cpu.idle");
+  const [broadcastClickCount, setBroadcastClickCount] = useState(0);
 
   useEffect(() => {
     client.getContext().then(c => {
@@ -23,13 +24,21 @@ function Widget() {
         setMetric(metric);
       }
     );
+
+    client.events.onCustom('modal_button_click', setBroadcastClickCount)
   }, []);
+
+  const onOpenSidePanel = (args:any) => {  
+    client.sidePanel.open('custom-side-panel', {metric})
+  }
 
   return (
     <section style={{ padding: "10px" }}>
       <h2>Hello {name} 👋</h2>
       <p>Welcome to your first Datadog application.</p>
-      <p>Your favorite metric is: {metric}</p>
+      <p>Your favorite metric is: <strong>{metric}</strong></p>
+      <p>You can open a side panel programatically and pass to it your favorite metric by clicking <button className="button button-outline" onClick={onOpenSidePanel}>here</button> </p>
+      <p>The red button in the modal has been clicked: <strong>{broadcastClickCount}</strong> time(s)</p>
     </section>
   );
 }

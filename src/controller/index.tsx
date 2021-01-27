@@ -20,6 +20,16 @@ const initController = () => {
         source: 'modal'
       })
     }
+
+    // open an iframe side panel defined inline here in controller
+    if (context.menuItem.key === 'open-custom-panel') {
+      client.sidePanel.open({
+        key: 'custom-panel-from-controller',
+        source: 'panel'
+      }, {
+        message:'Hi! I was sent here from the cog menu 👋'
+      })
+    }
   })
 
   // listen for modal events
