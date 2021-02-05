@@ -92,6 +92,7 @@
   ],
   "description": "A hello-world like application used as a starting point for apps",
   "dev_mode_url": "http://localhost:3000",
+  "api_version": "v1",
   "name": "Your first app",
   "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Emojione_1F44B.svg/1024px-Emojione_1F44B.svg.png"
 }
