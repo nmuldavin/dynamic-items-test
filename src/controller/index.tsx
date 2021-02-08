@@ -1,44 +1,63 @@
-import { init, UiAppEventType, ModalSize } from "@datadog/ui-apps-sdk";
+import { init, UiAppEventType, MenuItemType } from "@datadog/ui-apps-sdk";
 import { useEffect } from 'react';
 
 const client = init({ debug: true });
 
 const initController = () => {
-  // listen for cog menu click events
-  client.events.on(UiAppEventType.DASHBOARD_COG_MENU_CLICK, context => {
-    if (context.menuItem.key === 'open-confirmation') {
-      // Open a modal pre-defined in the app manifest, referenced by string key
-      client.modal.open('confirmation-modal');
-    }
+  client.dashboardCogMenu.onRequestItems(({ dashboard }) => {
 
-    // open an iframe modal defined inline here in controller
-    if (context.menuItem.key === 'open-custom-modal') {
+    return { items: dashboard.timeframe.live ? [
+      {
+        key: 'confirm-cog-menu',
+        label: 'Click this if you see me!',
+        type: MenuItemType.EVENT
+      }
+    ] : [] };
+  });
+
+  client.widgetContextMenu.onRequestItems(({ widget }) => {
+    return {
+      items: [
+        {
+          key: 'confirm-context-menu',
+          label: `Click if this is a ${widget.definition.type}!`,
+          type: MenuItemType.EVENT
+        }
+      ]
+    }
+  })
+
+  client.events.on(UiAppEventType.DASHBOARD_COG_MENU_CLICK, context => {
+    if (context.menuItem.key === 'confirm-cog-menu') {
       client.modal.open({
-        key: 'custom-modal',
-        size: ModalSize.LARGE,
-        isCloseable: true,
-        source: 'modal'
+        key: 'confirm-cog-menu',
+        title: 'Did you see it only on live dashboards?',
+        message: 'Try toggling clicking the pause button to turn of live timeframe tracking. The cog menu item should only be present when live tracking.',
+        actionLabel: 'Yes, it works',
+        cancelLabel: 'No, you screwed up'
       })
     }
+  })
 
-    // open an iframe side panel defined inline here in controller
-    if (context.menuItem.key === 'open-custom-panel') {
-      client.sidePanel.open({
-        key: 'custom-panel-from-controller',
-        source: 'panel'
-      }, {
-        message:'Hi! I was sent here from the cog menu 👋'
+  client.events.on(UiAppEventType.WIDGET_CONTEXT_MENU_CLICK, context => {
+    if (context.menuItem.key === 'confirm-context-menu') {
+      client.modal.open({
+        key: 'confirm-context-menu',
+        title: 'Did you see a menu item listing the widget type?',
+        message: 'If so, that item was populated dynamically by the main Iframe controller, dynamic menu items work',
+        actionLabel: 'Yes, I saw it',
+        cancelLabel: 'No, I did not'
       })
     }
   })
 
   // listen for modal events
   client.events.on(UiAppEventType.MODAL_ACTION, () => {
-    console.log('Confirmed!')
+    console.log('Approved!')
   })
 
   client.events.on(UiAppEventType.MODAL_CANCEL, () => {
-    console.log('Denied!')
+    console.log('Rejected!')
   })
 
   client.events.on(UiAppEventType.MODAL_CLOSE, (definition) => {
