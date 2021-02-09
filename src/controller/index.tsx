@@ -4,9 +4,9 @@ import { useEffect } from 'react';
 const client = init({ debug: true });
 
 const initController = () => {
-  client.dashboardCogMenu.onRequestItems(({ dashboard }) => {
+  client.dashboardCogMenu.onRequest(({ dashboard }) => {
 
-    return { items: dashboard.timeframe.live ? [
+    return { items: dashboard.timeframe.isLive ? [
       {
         key: 'confirm-cog-menu',
         label: 'Click this if you see me!',
@@ -15,7 +15,7 @@ const initController = () => {
     ] : [] };
   });
 
-  client.widgetContextMenu.onRequestItems(({ widget }) => {
+  client.widgetContextMenu.onRequest(({ widget }) => {
     return {
       items: [
         {
